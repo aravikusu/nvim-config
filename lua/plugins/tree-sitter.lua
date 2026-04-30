@@ -7,6 +7,7 @@ return {
     indent = { enable = true },
     highlight = { enable = true },
     folds = { enable = true },
+	auto_install = true,
     ensure_installed = {
       "bash",
       "c",
@@ -31,6 +32,7 @@ return {
       "vimdoc",
       "xml",
       "yaml",
+	  "gdscript",
     },
   }
 }

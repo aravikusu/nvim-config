@@ -14,5 +14,9 @@ return {
 		})
 
 		vim.lsp.enable('lua_ls')
+		vim.lsp.enable('gdscript')
+		vim.lsp.enable('gdshader_lsp')
+		vim.lsp.enable('pyright')
+		vim.lsp.enable('markdown-oxide')
 	end,
 }
