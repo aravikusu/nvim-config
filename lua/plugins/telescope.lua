@@ -13,5 +13,7 @@ return {
 		end,
 		desc = 'Find files'
 	},
+	{ '<leader>pd', '<cmd>Telescope lsp_definitions<cr>', desc = 'List definitions'},
+	{ '<leader>pr', '<cmd>Telescope lsp_references<cr>', desc = 'List references'}
     }
 }
