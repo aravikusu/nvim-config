@@ -1,38 +1,58 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   lazy = false,
-  build = ':TSUpdate',
-  opts = {
-    -- LazyVim config for treesitter
-    indent = { enable = true },
-    highlight = { enable = true },
-    folds = { enable = true },
-	auto_install = true,
-    ensure_installed = {
+  build = ":TSUpdate",
+  config = function()
+    local ts = require("nvim-treesitter")
+    local languages = {
       "bash",
-      "c",
-      "diff",
+      "css",
+      "dockerfile",
+      "go",
       "html",
       "javascript",
-      "jsdoc",
       "json",
       "lua",
-      "luadoc",
-      "luap",
+	  "luadoc",
       "markdown",
-      "markdown_inline",
-      "printf",
+      "php",
       "python",
-      "query",
-      "regex",
-      "toml",
-      "tsx",
+      "scss",
+      "sql",
       "typescript",
       "vim",
-      "vimdoc",
-      "xml",
+      "vue",
       "yaml",
 	  "gdscript",
-    },
-  }
+	  "gdshader",
+	  "godot_resource",
+    }
+
+    ts.setup({})
+
+    -- NOTE: If languages fail to install or compilation hangs,
+    -- ensure 'tree-sitter-cli' is installed (e.g., :MasonInstall tree-sitter-cli).
+    -- If the issue persists, run :checkhealth nvim-treesitter to diagnose.
+
+    -- Use :TSInstall for manuall install languages
+    ts.install(languages)
+
+    -- Treesitter features for installed languages must be enabled manually
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = languages,
+      callback = function()
+        -- Enable native Neovim treesitter highlighting
+        vim.treesitter.start()
+
+        -- Configure code folding
+        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo.foldmethod = "expr"
+        vim.wo.foldlevel = 99
+
+        -- Enable treesitter-based indentation
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
+    })
+  end,
 }
+
