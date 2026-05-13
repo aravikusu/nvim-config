@@ -23,6 +23,9 @@ vim.keymap.set("n", "<leader>u", vim.cmd.Undotree, { desc = "Open Undotree" })
 vim.keymap.set("n", "<leader>e", vim.cmd.Neotree, { desc = "Open Neo-tree" })
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 
+vim.keymap.set({"n", "v"}, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+
 -- godot server
 local projectfile = vim.fn.getcwd() .. '/project.godot'
 if vim.fn.filereadable(projectfile) == 1 then
