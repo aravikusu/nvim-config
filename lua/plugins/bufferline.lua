@@ -1,10 +1,10 @@
 return {
-	'akinsho/bufferline.nvim',
-	version = "*",
-	dependencies = 'nvim-tree/nvim-web-devicons',
-	event = 'ColorScheme',
-	config = function()
-		vim.opt.termguicolors = true
-		require("bufferline").setup{}
-	end
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    event = 'ColorScheme',
+    config = function()
+        vim.opt.termguicolors = true
+        require("bufferline").setup{}
+    end
 }
