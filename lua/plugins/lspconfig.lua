@@ -18,10 +18,15 @@ return {
         vim.lsp.enable('gdshader_lsp')
         vim.lsp.enable('pyright')
         vim.lsp.enable('markdown-oxide')
-        vim.lsp.enable("rust-analyzer")
+        vim.lsp.enable("rust_analyzer")
 
         vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+                    vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+                end
+
                 local opts = { buffer = args.buf }
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
                 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
