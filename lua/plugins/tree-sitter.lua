@@ -28,6 +28,8 @@ return {
             "godot_resource",
             "rust",
             "toml",
+            "ron",
+            "cpp",
         }
 
         ts.setup({})

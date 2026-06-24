@@ -19,6 +19,7 @@ return {
         vim.lsp.enable('pyright')
         vim.lsp.enable('markdown-oxide')
         vim.lsp.enable("rust_analyzer")
+        vim.lsp.enable("clangd")
 
         vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)
