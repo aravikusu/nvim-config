@@ -30,6 +30,8 @@ return {
             "toml",
             "ron",
             "cpp",
+            "c_sharp",
+            "razor",
         }
 
         ts.setup({})
