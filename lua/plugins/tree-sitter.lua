@@ -32,6 +32,7 @@ return {
             "cpp",
             "c_sharp",
             "razor",
+            "svelte",
         }
 
         ts.setup({})
